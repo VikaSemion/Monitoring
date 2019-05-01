@@ -158,6 +158,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testing1.cs" />
+    <Compile Include="Testing2.cs" />
     <Compile Include="Tests1.cs" />
   </ItemGroup>
   <ItemGroup>
