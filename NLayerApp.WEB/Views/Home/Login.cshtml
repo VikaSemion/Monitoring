@@ -1,0 +1,30 @@
+﻿@model NLayerApp.WEB.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary()
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+        <div>
+    @Html.ActionLink("Do not have an account? Sign Up!", "Register")
+</div>
+        <p>
+            <label>Email</label><br />
+            @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+        <p>
+            <label>Password</label><br />
+            @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+        <p><button type="submit">Login</button></p>
+    </div>
+}

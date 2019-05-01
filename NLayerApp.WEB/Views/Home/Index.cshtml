@@ -1,0 +1,77 @@
+﻿@model IEnumerable<NLayerApp.WEB.Models.ReportViewModel>
+
+@{
+    ViewBag.Title = "Monitoring";
+}
+
+<h2 align ="center">Reports</h2>
+
+
+ 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Worker)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.O3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NO2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SO2)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Worker)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.O3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NO2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SO2)
+            </td>
+            <td>
+                @Html.ActionLink("Change", "MakeChanges", new { id = item.Id, date = item.Date, city = item.City,
+               email = @Request.QueryString["email"], O3 = item.O3, NO2 = item.NO2, SO2 = item.SO2 })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteReport", new { id = item.Id, date = item.Date, city = item.City,
+                O3 = item.O3, NO2 = item.NO2, SO2 = item.SO2, email = @Request.QueryString["email"]
+           })
+            </td>
+            <td>
+                @Html.ActionLink("Add", "SetReport", new { id = item.Id, email = @Request.QueryString["email"] })
+            </td>
+        </tr>
+    }
+</table>
