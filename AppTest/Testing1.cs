@@ -96,6 +96,35 @@ namespace AppTest
         }
 
 
+        [TestMethod]
+        public void LoginCheckResultOfPage()
+        {
+            // Arrange
+            var serv = new Mock<IReportService>();
+            var controller = new HomeController(serv.Object);
+            // Act
+            ViewResult result = controller.Login() as ViewResult;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
+
+        [TestMethod]
+        public void IndexCheckResultOfPage()
+        {
+            // Arrange
+
+            var serv = new Mock<IReportService>();
+            var controller = new HomeController(serv.Object);
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Model);
+        }
+
+
+
 
         public List<ReportDTO> GetTestReports()
         {
