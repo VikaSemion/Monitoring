@@ -56,6 +56,14 @@ namespace NLayerApp.BLL.Services
             Database.Save();
         }
 
+        public void AddToArchive(ReportDTO ReportDto)
+        {
+            Report Report = Database.Reports.Get(ReportDto.Id);
+            Report report = Report.ShallowCopy();
+            Database.Reports.Create(report);
+            Database.Save();
+        }
+
         public void DeleteReport(ReportDTO ReportDto)
         {
             Report Report = Database.Reports.Get(ReportDto.Id);
@@ -71,6 +79,7 @@ namespace NLayerApp.BLL.Services
             return mapper.Map<IEnumerable<Report>, List<ReportDTO>>(Database.Reports.GetAll());
         }
 
+
         public ReportDTO GetReport(int? id)
         {
             if (id == null)
@@ -82,6 +91,8 @@ namespace NLayerApp.BLL.Services
             return new ReportDTO { Id = Report.Id, Date = Report.Date, City = Report.City, Worker = Report.Worker,
             O3 = Report.O3, NO2 = Report.NO2, SO2 = Report.SO2};
         }
+
+
 
         public void Dispose()
         {

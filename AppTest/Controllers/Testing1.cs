@@ -14,13 +14,15 @@ using Microsoft.Owin.Security;
 using NLayerApp.BLL.Services;
 using System.Web.Http.Results;
 
+/// MSTEST FRAMEWORK
+
 namespace AppTest
 {
     [TestClass]
     public class MyTest
     {
         [TestMethod]
-        public void SetReportCheckResultOfPage()
+        public void SetReport_CheckResultOfPage()
         {
             // Arrange
 
@@ -36,21 +38,22 @@ namespace AppTest
 
 
         [TestMethod]
-        public void CheckLoginExceptions()
+        public void Login_CheckLingResultIfModelIsNull_Exceptions()
         {
+            // Arrange
             var mock = new Mock<IReportService>();
             ApplicationUser model = new ApplicationUser();
             model = null;
             var controller = new HomeController(mock.Object);
-
+            // Act
             var result = controller.Login() as ViewResult;
-
+            // Assert
             Assert.AreEqual(String.Empty, result.ViewName);
 
         }
 
         [TestMethod]
-        public void DeleteReportCheckResultOfPage()
+        public void DeleteReport_CheckResultOfPage()
         {
             // Arrange
 
@@ -65,7 +68,7 @@ namespace AppTest
 
 
         [TestMethod]
-        public void MakeChangesCheckResultOfPage()
+        public void MakeChanges_CheckResultOfPage()
         {
             // Arrange
             int ReportId = 2;
@@ -83,7 +86,7 @@ namespace AppTest
 
 
         [TestMethod]
-        public void RegisterCheckResultOfPage()
+        public void Register_CheckResultOfPage()
         {
             // Arrange
             var serv = new Mock<IReportService>();
@@ -97,7 +100,7 @@ namespace AppTest
 
 
         [TestMethod]
-        public void LoginCheckResultOfPage()
+        public void Login_CheckResultOfPage()
         {
             // Arrange
             var serv = new Mock<IReportService>();
@@ -110,7 +113,7 @@ namespace AppTest
         }
 
         [TestMethod]
-        public void IndexCheckResultOfPage()
+        public void Index_CheckResultOfPage()
         {
             // Arrange
 

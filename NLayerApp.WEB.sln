@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerApp.DAL", "NLayerApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerApp.BLL", "NLayerApp.BLL\NLayerApp.BLL.csproj", "{3DA78680-2874-4DC2-8947-415ABB46E1A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTest", "AppTest\AppTest.csproj", "{38580BA4-10E4-4979-868B-9408391E8AE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoring.Tests", "AppTest\Monitoring.Tests.csproj", "{38580BA4-10E4-4979-868B-9408391E8AE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

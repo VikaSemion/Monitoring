@@ -28,7 +28,7 @@ namespace NLayerApp.DAL.Repositories
             }
         }
 
-        
+
 
         public void Save()
         {

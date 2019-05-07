@@ -15,5 +15,13 @@ namespace NLayerApp.BLL.DTO
         public int O3 { get; set; }
         public int NO2 { get; set; }
         public int SO2 { get; set; }
+
+
+        public ReportDTO ShallowCopy()
+        {
+            return (ReportDTO)this.MemberwiseClone();
+        }
+
+
     }
 }

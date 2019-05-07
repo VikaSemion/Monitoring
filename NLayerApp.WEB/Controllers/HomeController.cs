@@ -29,13 +29,25 @@ namespace NLayerApp.WEB.Controllers
             ReportService = serv;
         }
 
-            public ActionResult Index()
+
+        public ActionResult Index()
         {
             IEnumerable<ReportDTO> ReportDtos = ReportService.GetReports();
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ReportDTO, ReportViewModel>()).CreateMapper();
             var Reports = mapper.Map<IEnumerable<ReportDTO>, List<ReportViewModel>>(ReportDtos);
             //email = Request.QueryString["email"];
             return View(Reports);
+        }
+
+
+        public ActionResult Archive(ReportDTO Report)
+        {
+            ReportService.AddToArchive(Report);
+            IEnumerable<ReportDTO> ReportDtos = ReportService.GetReports();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ReportDTO, ReportViewModel>()).CreateMapper();
+            var Reports = mapper.Map<IEnumerable<ReportDTO>, List<ReportViewModel>>(ReportDtos);
+            string WorkerE = Request.QueryString["email"];
+            return RedirectToAction("", "Home/Index", new { email = WorkerE });
         }
 
         public ActionResult MakeChanges(int? id)
@@ -279,5 +291,6 @@ namespace NLayerApp.WEB.Controllers
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");
         }*/
+
     }
 }

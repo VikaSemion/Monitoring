@@ -186,8 +186,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF\ApplicationContext.cs" />
+    <Compile Include="EF\ArchiveContext.cs" />
     <Compile Include="EF\Context.cs" />
+    <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Report.cs" />
+    <Compile Include="Entities\Singleton.cs" />
+    <Compile Include="Identities\ApplicationUserManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

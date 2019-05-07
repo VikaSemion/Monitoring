@@ -15,5 +15,12 @@ namespace NLayerApp.DAL.Entities
         public int O3 { get; set; }
         public int NO2 { get; set; }
         public int SO2 { get; set; }
+
+
+        public Report ShallowCopy()
+        {
+            return (Report)this.MemberwiseClone();
+        }
     }
+
 }

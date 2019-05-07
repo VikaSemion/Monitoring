@@ -1,9 +1,23 @@
 ﻿@model NLayerApp.WEB.Models.ReportViewModel
+@using NLayerApp.DAL.Entities;
 @{
     ViewBag.Title = "DeleteReport";
 }
 
 <h2>Delete Report</h2>
+
+@{
+    Singleton singleton1 = Singleton.GetInstance();
+}
+
+
+<td>
+    <h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;">
+        Your session started at:
+        @singleton1.Date
+    </h3>
+</td>
+
 
 @using (Html.BeginForm())
 {

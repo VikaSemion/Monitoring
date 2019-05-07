@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,12 +15,15 @@ using NLayerApp.BLL.Services;
 using System.Web.Http.Results;
 using NLayerApp.DAL.Entities;
 
+
+/// XUNIT FRAMEWORK
+
 namespace AppTest
 {
     public class Testing2
     {
         [Fact]
-        public void GetReportReturnsBadRequestResultWhenIdIsNull()
+        public void GetReport_IdIsNull_ReturnsBadRequestResult()
         {
             // Arrange
             var mock = new Mock<IReportService>();
@@ -36,7 +39,7 @@ namespace AppTest
         }
 
         [Fact]
-        public void GetReportReturnsNotFoundResultWhenReportNotFound()
+        public void GetReport_ReportNotFound_ReturnsNotFoundResult()
         {
             int ReportId = 1;
             var mock = new Mock<IReportService>();
@@ -52,7 +55,7 @@ namespace AppTest
         }
 
         [Fact]
-        public void GetReportReturnsViewResultWithReport()
+        public void GetReport_ReturnsViewResultWithReport()
         {
             int ReportId = 2;
             var mock = new Mock<IReportService>();
@@ -76,7 +79,7 @@ namespace AppTest
         }
 
         [Fact]
-        public void IndexReturnsAViewResultWithAListOfReports()
+        public void Index_ReturnsAViewResultWithAListOfReports()
         {
             // Arrange
             var mock = new Mock<IReportService>();

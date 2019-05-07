@@ -17,8 +17,12 @@ using System.Web;
 using System.Collections.Specialized;
 using System.Web.Routing;
 
+
+/// NUNIT FRAMEWORK
+
 namespace AppTest.Controllers
 {
+    [TestFixture]
     public static class Test3
     {
 

@@ -14,5 +14,10 @@ namespace NLayerApp.WEB.Models
         public int O3 { get; set; }
         public int NO2 { get; set; }
         public int SO2 { get; set; }
+
+        public ReportViewModel ShallowCopy()
+        {
+            return (ReportViewModel)this.MemberwiseClone();
+        }
     }
 }
