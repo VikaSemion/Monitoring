@@ -15,7 +15,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using NLayerApp.BLL.Infrastructure;
 using Microsoft.Owin;
-using NLayerApp.DAL.Entities;
+using NLayerApp.BLL.Services;
 using System.Net;
 
 namespace NLayerApp.WEB.Controllers
@@ -36,6 +36,26 @@ namespace NLayerApp.WEB.Controllers
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ReportDTO, ReportViewModel>()).CreateMapper();
             var Reports = mapper.Map<IEnumerable<ReportDTO>, List<ReportViewModel>>(ReportDtos);
             //email = Request.QueryString["email"];
+            var calculatorContext = new Report2(new CalculatorO3());
+            var O3Total = calculatorContext.Calculate(ReportDtos);
+            calculatorContext.SetCalculator(new CalculatorNO2());
+            var NO2Total = calculatorContext.Calculate(ReportDtos);
+            calculatorContext.SetCalculator(new CalculatorSO2());
+            var SO2Total = calculatorContext.Calculate(ReportDtos);
+            ViewBag.O3Result = O3Total;
+            ViewBag.NO2Result = NO2Total;
+            ViewBag.SO2Result = SO2Total;
+
+            AbstractClass result = new Formula1();
+            result.Calculating(O3Total, NO2Total, SO2Total);
+            ViewBag.F1S1 = result.FirstStep(O3Total, NO2Total, SO2Total);
+            ViewBag.F1S2 = result.SecondStep(O3Total, NO2Total, SO2Total);
+            ViewBag.F1S3 = result.ThirdStep(O3Total, NO2Total, SO2Total);
+            result = new Formula2();
+            result.Calculating(O3Total, NO2Total, SO2Total);
+            ViewBag.F2S1 = result.FirstStep(O3Total, NO2Total, SO2Total);
+            ViewBag.F2S2 = result.SecondStep(O3Total, NO2Total, SO2Total);
+            ViewBag.F2S3 = result.ThirdStep(O3Total, NO2Total, SO2Total);
             return View(Reports);
         }
 

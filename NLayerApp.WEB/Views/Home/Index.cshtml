@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<NLayerApp.WEB.Models.ReportViewModel>
 @using NLayerApp.DAL.Entities;
+@using NLayerApp.BLL.Interfaces;
+@using NLayerApp.BLL.Services;
+@using NLayerApp.WEB.Controllers;
 @{
     ViewBag.Title = "Monitoring";
 }
@@ -10,9 +13,22 @@
 
    <td>
     <h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;">Your session started at:
-    @singleton1.Date</h3>
-       @DateTime.Now
+    @singleton1.Date</h3> <p align="center"> ______________________ </p>
+       <!--@DateTime.Now-->
+       <h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;">
+           Sum of O3 pollution:
+           @ViewBag.O3Result
+       </h3> <p align="center"> ______________________ </p>
+       <h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;">
+           Sum of NO2 pollution:
+           @ViewBag.NO2Result
+       </h3> <p align="center"> ______________________ </p>
+       <h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;">
+           Sum of SO2 pollution:
+           @ViewBag.SO2Result
+       </h3>
     </td>
+
 
 
     <table class="table">
@@ -101,3 +117,20 @@
             </tr>
         }
     </table>
+
+
+              
+                  <h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;"> Analysis </h3>
+                         <br />
+
+    <p align="center" style="font-size: 1.1em;color: #222">
+        First part: <br />
+        Sum of all pollution: @ViewBag.F1S1 <br />
+        Average amount of pollution: @ViewBag.F1S2 <br />
+        Forecast for amount of all polution for this year: @ViewBag.F1S3 <br />
+        <br />
+        Second part:<br />
+        Sum of all pollution: @ViewBag.F1S1 <br />
+        1% of all pollution: @ViewBag.F1S2 <br />
+        Forecast for amount of all polution for this year: @ViewBag.F1S3 <br />
+    </p>

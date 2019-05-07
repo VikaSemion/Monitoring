@@ -319,6 +319,8 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReportViewModel.cs" />
+    <Compile Include="Models\Strategy.cs" />
+    <Compile Include="Models\TemplateMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ReportModule.cs" />
   </ItemGroup>

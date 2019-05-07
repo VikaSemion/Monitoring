@@ -16,6 +16,9 @@ namespace NLayerApp.BLL.Services
     {
         IUnitOfWork Database { get; set; }
 
+        public ReportService()
+        { }
+
         public ReportService(IUnitOfWork uow)
         {
             Database = uow;
@@ -91,7 +94,6 @@ namespace NLayerApp.BLL.Services
             return new ReportDTO { Id = Report.Id, Date = Report.Date, City = Report.City, Worker = Report.Worker,
             O3 = Report.O3, NO2 = Report.NO2, SO2 = Report.SO2};
         }
-
 
 
         public void Dispose()
