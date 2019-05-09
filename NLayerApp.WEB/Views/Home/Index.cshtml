@@ -119,8 +119,13 @@
     </table>
 
 
+                         <p align="center"> ______________________ </p>
+
+                        <h4 align="center"> @Html.ActionLink("Reports to XML and JSON (5 reports)", "Contact", new { email = @Request.QueryString["email"] })</h4>
+
+                        <p align="center"> ______________________ </p>
               
-                  <h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;"> Analysis </h3>
+                  <h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;"> Analysis (template method) </h3>
                          <br />
 
     <p align="center" style="font-size: 1.1em;color: #222">
@@ -130,7 +135,24 @@
         Forecast for amount of all polution for this year: @ViewBag.F1S3 <br />
         <br />
         Second part:<br />
-        Sum of all pollution: @ViewBag.F1S1 <br />
-        1% of all pollution: @ViewBag.F1S2 <br />
-        Forecast for amount of all polution for this year: @ViewBag.F1S3 <br />
+        Sum of all pollution: @ViewBag.F2S1 <br />
+        1% of all pollution (rounded): @ViewBag.F2S2 <br />
+        Forecast amount of all polution for this year: @ViewBag.F2S3 <br />
     </p>
+
+<p align="center"> ______________________ </p>
+
+    
+<h3 align="center" style="font-size: 1.25em;color: #222; margin: 5px 0;"> Analysis (facade method) </h3>
+<br />
+
+<p align="center" style="font-size: 1.1em;color: #222">
+    First part: <br />
+    Sum of all pollution: @ViewBag.FCD_S1_O1 <br />
+    Forecast amount of all polution for this year: @ViewBag.FCD_S1_ON <br />
+    <br />
+    Second part:<br />
+    Average amount of pollution: @ViewBag.FCD_S2_O1 <br />
+    1% of all pollution (rounded): @ViewBag.FCD_S2_OZ <br />
+</p>
+

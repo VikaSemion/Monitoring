@@ -17,6 +17,7 @@ using NLayerApp.BLL.Infrastructure;
 using Microsoft.Owin;
 using NLayerApp.BLL.Services;
 using System.Net;
+using System.Diagnostics;
 
 namespace NLayerApp.WEB.Controllers
 {
@@ -36,6 +37,8 @@ namespace NLayerApp.WEB.Controllers
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ReportDTO, ReportViewModel>()).CreateMapper();
             var Reports = mapper.Map<IEnumerable<ReportDTO>, List<ReportViewModel>>(ReportDtos);
             //email = Request.QueryString["email"];
+
+            /// STRATEGY
             var calculatorContext = new Report2(new CalculatorO3());
             var O3Total = calculatorContext.Calculate(ReportDtos);
             calculatorContext.SetCalculator(new CalculatorNO2());
@@ -46,6 +49,7 @@ namespace NLayerApp.WEB.Controllers
             ViewBag.NO2Result = NO2Total;
             ViewBag.SO2Result = SO2Total;
 
+            /// TEMPLATE
             AbstractClass result = new Formula1();
             result.Calculating(O3Total, NO2Total, SO2Total);
             ViewBag.F1S1 = result.FirstStep(O3Total, NO2Total, SO2Total);
@@ -56,6 +60,18 @@ namespace NLayerApp.WEB.Controllers
             ViewBag.F2S1 = result.FirstStep(O3Total, NO2Total, SO2Total);
             ViewBag.F2S2 = result.SecondStep(O3Total, NO2Total, SO2Total);
             ViewBag.F2S3 = result.ThirdStep(O3Total, NO2Total, SO2Total);
+
+            /// FACADE
+            Subsystem1 subsystem1 = new Subsystem1();
+            Subsystem2 subsystem2 = new Subsystem2();
+            Facade facade = new Facade(subsystem1, subsystem2);
+            ViewBag.FCD_S1_O1 = subsystem1.operation1(O3Total, NO2Total, SO2Total);
+            ViewBag.FCD_S1_ON = subsystem1.operationN(O3Total, NO2Total, SO2Total);
+            ViewBag.FCD_S2_O1 = subsystem2.operation1(O3Total, NO2Total, SO2Total);
+            ViewBag.FCD_S2_OZ = subsystem2.operationZ(O3Total, NO2Total, SO2Total);
+
+            
+           
             return View(Reports);
         }
 
@@ -69,6 +85,16 @@ namespace NLayerApp.WEB.Controllers
             string WorkerE = Request.QueryString["email"];
             return RedirectToAction("", "Home/Index", new { email = WorkerE });
         }
+
+        public ActionResult Contact()
+        {
+            string fileName = @"C:\Users\Admin\Documents\Visual Studio 2015\Projects\NLayerApp.WEB\Monitoring\NLayerApp.WEB\bin\Adapter.exe";
+            string WorkerE = Request.QueryString["email"];
+            Process.Start(fileName);
+            return RedirectToAction("", "Home/Index", new { email = WorkerE });
+        }
+
+        
 
         public ActionResult MakeChanges(int? id)
         {
